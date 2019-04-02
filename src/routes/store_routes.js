@@ -36,6 +36,7 @@ router.post('/api/store/', tokenAuth, (req, res) => {
     location: req.body.location,
     phone: req.body.phone,
     email: req.body.email,
+    image: req.body.image,
     user_id: req.user.id
   })
   .then(storeNewFromDB => {
@@ -69,7 +70,9 @@ router.put('/api/store/:id', (req, res) => {
       store_name: req.body.store.store_name,
       phone: req.body.store.phone,
       location: req.body.store.location,
-      email: req.body.store.email})
+      email: req.body.store.email,
+      image: req.body.store.image
+    })
     })
     .then((store) => {
       res.status(200).json({store})

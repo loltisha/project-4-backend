@@ -20,6 +20,9 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
+      image: {
+        type: Sequelize.STRING
+      },
       userId:{
         field: "user_id", 
         type: Sequelize.INTEGER,
