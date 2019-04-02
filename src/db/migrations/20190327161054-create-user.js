@@ -23,7 +23,7 @@ module.exports = {
         default: "customer", 
         type: Sequelize.ENUM(
           "customer",
-          "owner"
+          "florist"
         )
       },
       createdAt: {

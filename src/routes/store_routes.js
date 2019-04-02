@@ -2,6 +2,9 @@ import express from "express";
 import passport from "passport";
 import models from "../db/models";
 const tokenAuth = passport.authenticate("jwt", { session: false });
+
+// ADDDING localAuth BREAKS MY CODE, PLEASE GHADEER SAVE ME
+const localAuth = passport.authenticate("local", { session: false });
 const User = models.User;
 
 // instantiate a router (mini app that only handles routes)
@@ -27,10 +30,16 @@ router.get('/api/store/:id', (req, res) => {
 })
 
 // create new store
-router.post('/api/store/', (req, res) => {
-  models.Store.create(req.body)
+router.post('/api/store/', tokenAuth, (req, res) => {
+  models.Store.create({
+    store_name: req.body.store_name,
+    location: req.body.location,
+    phone: req.body.phone,
+    email: req.body.email,
+    user_id: req.user.id
+  })
   .then(storeNewFromDB => {
-  res.status(201).json({store: storeNewFromDB});
+    res.status(201).json({store: storeNewFromDB});
   })
   .catch(e => console.log(e))
   
@@ -50,22 +59,30 @@ router.delete('/api/store/:id', (req, res) => {
     .catch(e => console.log(e)); 
 });
 
+
+
 // update an existing store
 router.put('/api/store/:id', (req, res) => {
   // find store by id sent to us by user in the url
-  models.Store.update({  
-    store_name: req.body.store_name,
-    phone: req.body.phone,
-    location: req.body.location,
-    email: req.body.email },
-    {returning: true, where: {id: req.params.id} })
-    .then(([ rowsUpdate, [updatedStore] ]) =>{
-        // the database was able to update the user
-        // and it sent us back an updated record with the new information
-        // we can now sent back this new information to the user
-        res.status(200).json({store: updatedStore});
-    }).catch(e => console.log(e)); 
+  models.Store.findByPk(req.params.id).then(store => {
+    return store.update({  
+      store_name: req.body.store.store_name,
+      phone: req.body.store.phone,
+      location: req.body.store.location,
+      email: req.body.store.email})
+    })
+    .then((store) => {
+      res.status(200).json({store})
+    })
+    .catch(e => console.log(e)); 
 });
 
+router.get('/api/user/:id/stores', (req, res) => {
+  //  res.status(200).json({message: 'working'});
+    models.User.findByPk(req.params.id, { include : [{model: models.Store}] }).then(user => {
+      res.status(200).json({user: user});
+    });
+    // }).catch(e => console.log(e));
+})
 
 export default router;

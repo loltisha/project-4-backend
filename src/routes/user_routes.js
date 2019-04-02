@@ -70,7 +70,6 @@ router.post("/sign-in", localAuth, (req, res, next) => {
     const payload = {
       id: req.user.id,
       email: req.user.email,
-      type:req.user.type,
       expires: process.env.JWT_EXPIRATION_D + "d"
     };
 

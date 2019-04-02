@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         default: "customer", 
         type: DataTypes.ENUM(
           "customer",
-          "owner"
+          "florist"
         )
       },
     },
