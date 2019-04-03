@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     Store.belongsTo(models.User, {
       foreignKey:"user_id"
     });
+    Store.hasMany(models.Flower, {
+      foreignKey: "store_id"
+    });
   };
   return Store;
 };
