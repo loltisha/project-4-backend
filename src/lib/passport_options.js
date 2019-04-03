@@ -5,7 +5,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const jwtOptions = {
-  jwtFromRequest: req => req.cookies.jwt,
+  jwtFromRequest: req => {
+    console.log(req.cookies.jwt)
+    
+    return req.cookies.jwt},
   secretOrKey: process.env.PASS_KEY
 };
 

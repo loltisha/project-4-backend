@@ -16,6 +16,8 @@ _dotenv2.default.config(); // storing JWT as a cookie and using HTTPS for all we
 // steal our user’s JWT using XSS.
 var jwtOptions = exports.jwtOptions = {
   jwtFromRequest: function jwtFromRequest(req) {
+    console.log(req.cookies.jwt);
+
     return req.cookies.jwt;
   },
   secretOrKey: process.env.PASS_KEY

@@ -26,6 +26,14 @@ app.use(cors({
   credentials: true,
 }));
 
+app.options('*', cors());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // define port for API to run on
 const port = process.env.PORT;
 
