@@ -23,8 +23,21 @@ authentication and common middlewares.
 ![GitHub Logo](src/images/florist.png) 
 # Florist
 ![GitHub Logo](src/images/im2.png) 
-Florist is a website that connect the florist with customerts to buy flowers from different flower stores.</br>
+Home Page</br>
+#
 
+
+
+Florist is a website that connect the florist with customerts to buy flowers from different flower stores.</br>
+Once the user wants to create an account they must choose whether they are a customer or florist</br>
+![GitHub Logo](src/images/im5.png) 
+#
+
+![GitHub Logo](src/images/im3.png) 
+Here when the user wants to view flower stores.
+![GitHub Logo](src/images/im4.png) 
+When the user clicks on view flower buttons, it will view different types of flowers for that store.
+#
 there are two type of end users:</br>
 1- florist: the owner can sign-up,log-in, add store and flower, edit, and delete it.</br>
 2- customer: the customer can sign-up,log-in, view store and flower.</br>
