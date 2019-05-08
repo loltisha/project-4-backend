@@ -22,7 +22,7 @@ authentication and common middlewares.
 #### POST /sign-up -->
 ![GitHub Logo](src/images/florist.png) 
 # Florist
-
+![GitHub Logo](src/images/im2.png) 
 Florist is a website that connect the florist with customerts to buy flowers from different flower stores.</br>
 
 there are two type of end users:</br>
